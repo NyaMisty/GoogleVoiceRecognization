@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+message FinalResultContent {
+    bytes result = 1;
+    float confidence = 2;
+    bytes tokenizedResult = 12;
+    float unk2 = 18;
+    float unk3 = 19;
+    float unk4 = 20;
+}
+
+message FinalResult {
+    int32 unk1 = 1;
+    int32 unk2 = 2;
+    FinalResultContent content = 3;
+}
+
+message PartialResultPart {
+    bytes text = 1;
+    float stability = 2;
+}
+
+message PartialResult {
+    repeated PartialResultPart partArray = 1;
+    int32 unk1 = 2;
+    int32 unk2 = 3;
+    int32 unk3 = 16;
+}
+
+message RecognitionEvent {
+    int32 eventType = 1;
+    int32 unk1 = 2;
+    FinalResult finalResult = 3;
+    PartialResult partialResult = 4;
+}
+
+message RecognizerEvent {
+    RecognitionEvent recognititonEvent = 1;
+    string language = 3;
+    string lastLanguage = 4;
+}
+
+message RecognizeResponse {
+    int32 seq = 5;
+    int32 isEnd = 1;
+    RecognizerEvent recognizerEvent = 1253625;
+}

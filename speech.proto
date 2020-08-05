@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+message Locale {
+    string locale = 1;
+    int32  format = 2;
+}
+
+message UserInfo {
+    Locale spokenLanguage = 2;
+    Locale userLocale = 3;
+    string installId = 5;
+}
+
+message AudioInfo {
+    float sampleRateHz = 2;
+    int32 encoding = 3;
+}
+
+message ClientInfo {
+    string applicationId = 2;
+    string systemType = 8;
+    string platformVersion = 9;
+    string applicationVersion = 10;
+    string deviceModel = 11;
+    int32 deviceDisplayHeightPixels = 12;
+    int32 deviceDisplayWidthPixels = 13;
+    int32 deviceDisplayDensityDpi = 14;
+    string triggerApplicationId = 16;
+}
+
+message RecognitionContext {
+    string ClientId = 1;
+    string ApplicationName = 11;
+    string ClientApplicationId = 19;
+}
+
+message RecognizerInfo {
+    RecognitionContext recognitionContext = 1;
+    int32 maxNBestResults = 3;
+    int32 unk1 = 5;
+    int32 unk2 = 7;
+    float partialResultConfidenceThreshold = 8;
+    int32 unk3 = 11;
+    int32 unk4 = 12;
+    int32 unk5 = 13;
+    int32 unk6 = 14;
+    int32 unk7 = 20;
+    int32 unk8 = 22;
+}
+
+message LoggingInfo {
+    int32 gaiaLoggingAllowed = 1;
+}
+
+message SpeechInitialRequest {
+    string serviceType = 1;
+    UserInfo userInfo =  293000;
+    AudioInfo audioInfo = 293100;
+    ClientInfo clientInfo = 294000;
+    RecognizerInfo recognizerInfo =  294500;
+    AudioInfo preambleAudioInfo = 65013010;
+    LoggingInfo loggingInfo = 77499489;
+}
+
+message AudioData {
+    bytes audioData = 1;
+}
+
+message AudioRequest {
+    AudioData audioData = 293101;
+}
