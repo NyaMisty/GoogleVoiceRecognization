@@ -54,7 +54,7 @@ class RecvTh(threading.Thread):
 th = RecvTh()
 th.start()
 
-pcm = open(sys.argv[1], 'rb').read() # 16bit, 16000Hz RAW PCM Data
+pcm = open(sys.argv[1], 'rb').read() # 16bit, 16000Hz Mono RAW PCM Data
 
 def sendAudio(audio):
     req = AudioRequest()
